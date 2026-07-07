@@ -278,7 +278,7 @@
     // Re-query live nodes each frame so a DC re-render can't leave us driving stale elements.
     (function loop() {
       var section = $('#gallery'), ring = $('#gallery .ac-ring'), cards = $$('#gallery .ac-gc');
-      if (section && ring && cards.length) {
+      if (section && ring && cards.length && innerWidth >= 860) {
         var total = section.offsetHeight - innerHeight;
         var p = total > 0 ? Math.max(0, Math.min(1, -section.getBoundingClientRect().top / total)) : 0;
         if (!scrolling && !REDUCE) auto += 0.04;

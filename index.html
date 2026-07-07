@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/asset_001.bin"></script>
 
-  <link rel="stylesheet" href="assets/motion.css?v=17">
+  <link rel="stylesheet" href="assets/motion.css?v=20">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -495,7 +495,7 @@
       section, footer#contact { padding-left: 24px !important; padding-right: 24px !important; padding-top: 74px !important; padding-bottom: 74px !important; }
       nav { padding-left: 20px !important; padding-right: 20px !important; }
       header#top [style*="width: 44%"] { width: 100% !important; padding: 116px 24px 70px !important; }
-      header#top [style*="width: 62%"] { width: 100% !important; opacity: 0.30 !important; }
+      header#top [style*="width: 62%"] { width: 100% !important; opacity: 0.2 !important; }
       [style*="justify-content: space-between"] { flex-wrap: wrap !important; }
     }
     @media (max-width: 560px) {
@@ -735,9 +735,9 @@
 
   <!-- ===== CIRCULAR GALLERY ===== -->
   <section id="gallery" data-screen-label="Gallery" style="position: relative; height: 320vh; border-top: 1px solid rgba(201,150,62,0.14); background: linear-gradient(180deg, #121214, #1A1A1D 42%);">
-    <div style="position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 780px; height: 780px; border-radius: 50%; background: radial-gradient(circle, rgba(226,185,106,0.10) 0%, transparent 64%); filter: blur(80px); pointer-events: none;"></div>
-      <div style="position: absolute; top: 9%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; width: 90%;">
+    <div class="ac-gwrap" style="position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <div class="ac-gglow" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 780px; height: 780px; border-radius: 50%; background: radial-gradient(circle, rgba(226,185,106,0.10) 0%, transparent 64%); filter: blur(80px); pointer-events: none;"></div>
+      <div class="ac-ghead" style="position: absolute; top: 9%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; width: 90%;">
         <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.3em; color: #C9963E;">GALLERY</span>
         <h2 style="font-family: Cormorant Garamond, serif; font-weight: 700; font-size: clamp(38px, 5vw, 64px); line-height: 1; margin: 14px 0 0; color: #F5EFE0;">In Frames</h2>
         <p style="font-size: 13px; color: rgba(245,239,224,0.45); margin: 12px 0 0; letter-spacing: 0.08em;">Scroll to rotate the gallery</p>
@@ -1080,5 +1080,5 @@ class Component extends DCLogic {
 </script>
 
 <script src="assets/anime.min.js"></script>
-<script src="assets/motion.js?v=17"></script>
+<script src="assets/motion.js?v=20"></script>
 </body></html>
