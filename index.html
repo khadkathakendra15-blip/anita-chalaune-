@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/asset_001.bin"></script>
 
-  <link rel="stylesheet" href="assets/motion.css?v=29">
+  <link rel="stylesheet" href="assets/motion.css?v=30">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -520,6 +520,7 @@
       header#top .ac-hstats svg { width: 15px !important; height: 15px !important; }
       header#top .ac-hstats span[style*="font-size: 20px"] { font-size: 26px !important; }
       header#top .ac-hstats span[style*="font-size: 9px"] { font-size: 8px !important; }
+      header#top .ac-swoosh { transform: translateY(-34%) !important; }
       #gallery { height: 118vh !important; }
       #gallery .ac-ghead { top: 4% !important; }
       #gallery .ac-gc { height: 430px !important; margin-top: -215px !important; }
@@ -579,7 +580,7 @@
     <div style="position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(to right, #1A1A1D 0%, #1A1A1D 45%, rgba(26,26,29,0.6) 57%, rgba(26,26,29,0.22) 69%, rgba(26,26,29,0) 83%);"></div>
 
     <!-- Golden swoosh arcs – bottom -->
-    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 55%; pointer-events: none; z-index: 4; transform: translateY(9%);">
+    <div class="ac-swoosh" style="position: absolute; bottom: 0; left: 0; right: 0; height: 55%; pointer-events: none; z-index: 4; transform: translateY(9%);">
       <svg viewBox="0 0 1400 420" preserveAspectRatio="xMidYMax meet" style="width: 100%; height: 100%;" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="swg1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1086,5 +1087,5 @@ class Component extends DCLogic {
 </script>
 
 <script src="assets/anime.min.js"></script>
-<script src="assets/motion.js?v=29"></script>
+<script src="assets/motion.js?v=30"></script>
 </body></html>
