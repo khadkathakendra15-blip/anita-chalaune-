@@ -273,7 +273,7 @@
     addEventListener('scroll', function () {
       scrolling = true; clearTimeout(stO); stO = setTimeout(function () { scrolling = false; }, 160);
     }, { passive: true });
-    function fit() { var st = $('#gallery .ac-ring-stage'); if (st) st.style.transform = 'scale(' + (innerWidth < 860 ? 0.62 : Math.max(0.42, Math.min(1, innerWidth / 1240))) + ')'; }
+    function fit() { var st = $('#gallery .ac-ring-stage'); if (st) st.style.transform = 'scale(' + (innerWidth < 860 ? 0.78 : Math.max(0.42, Math.min(1, innerWidth / 1240))) + ')'; }
     fit(); addEventListener('resize', fit);
     // Re-query live nodes each frame so a DC re-render can't leave us driving stale elements.
     (function loop() {
