@@ -1,0 +1,83 @@
+/* ===== anime.js motion layer — custom cursor, progress, reveals ===== */
+.ac-cursor-dot, .ac-cursor-ring {
+  position: fixed; left: 0; top: 0; z-index: 99999; pointer-events: none;
+  border-radius: 50%; will-change: transform;
+}
+.ac-cursor-dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: #E2B96A; box-shadow: 0 0 10px rgba(226,185,106,0.6); }
+.ac-cursor-ring {
+  width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(201,150,62,0.55);
+  transition: width .28s cubic-bezier(.22,1,.36,1), height .28s cubic-bezier(.22,1,.36,1),
+              margin .28s cubic-bezier(.22,1,.36,1), background .28s, border-color .28s;
+}
+html.ac-cursor-active .ac-cursor-ring {
+  width: 56px; height: 56px; margin: -28px 0 0 -28px;
+  border-color: rgba(226,185,106,0.9); background: rgba(201,150,62,0.07);
+}
+html.ac-hide-cursor, html.ac-hide-cursor * { cursor: none !important; }
+@media (hover: none), (pointer: coarse) {
+  .ac-cursor-dot, .ac-cursor-ring { display: none !important; }
+  html.ac-hide-cursor, html.ac-hide-cursor * { cursor: auto !important; }
+}
+
+/* slim scroll progress bar */
+.ac-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  background: linear-gradient(90deg, #8B6520, #C9963E, #E2B96A);
+  z-index: 99998; pointer-events: none; box-shadow: 0 0 12px rgba(201,150,62,0.5);
+}
+
+/* elements handed to anime start hidden only once JS has flagged them */
+.ac-hidden { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ac-cursor-dot, .ac-cursor-ring, .ac-progress { display: none !important; }
+  .ac-hidden { opacity: 1 !important; }
+}
+
+/* ===== Typography: Bebas Neue headlines, Poppins for everything else ===== */
+body, p, a, span, div, li, label, button, input, textarea, blockquote, strong, em, small, time, figcaption {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+/* headline rule comes AFTER so it wins for headings and their split spans */
+h1, h2, h3, h1 *, h2 *, h3 * {
+  font-family: 'Bebas Neue', 'Poppins', system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.015em !important;
+}
+h1, h1 * { letter-spacing: 0.03em !important; line-height: 0.92 !important; }
+
+
+/* ===== Journey timeline (alternating photo cards) ===== */
+.ac-tl { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.ac-tl-line { position: absolute; top: 6px; bottom: 6px; left: 8px; width: 2px; background: linear-gradient(180deg, rgba(201,150,62,0.05), rgba(201,150,62,0.35), rgba(201,150,62,0.05)); }
+.ac-tl-item { position: relative; box-sizing: border-box; margin-bottom: 40px; padding-left: 46px; }
+.ac-tl-item:last-child { margin-bottom: 0; }
+.ac-tl-dot { position: absolute; left: 1px; top: 50%; margin-top: -8px; width: 16px; height: 16px; border-radius: 50%; background: #C9963E; box-shadow: 0 0 0 4px #1A1A1D, 0 0 0 6px rgba(201,150,62,0.3); z-index: 2; }
+.ac-tl-item::before { content: ""; position: absolute; top: 50%; margin-top: -1px; left: 9px; width: 37px; height: 2px; background: rgba(201,150,62,0.35); z-index: 0; }
+.ac-jcard { background: #212126; border: 1px solid rgba(201,150,62,0.22); border-radius: 16px; padding: 16px; transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .4s ease; }
+.ac-jcard:hover { transform: translateY(-6px); box-shadow: 0 24px 55px -18px rgba(184,134,11,0.45); border-color: rgba(201,150,62,0.6); }
+.ac-jcard .ac-jimg { border-radius: 12px; overflow: hidden; aspect-ratio: 3 / 2; margin-bottom: 16px; background: #1A1A1D; }
+.ac-jcard .ac-jimg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.ac-jcard .ac-jyear { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: #C9963E; }
+.ac-jcard h3 { font-size: 21px; margin: 7px 0 8px; color: #F5EFE0; line-height: 1.05; }
+.ac-jcard p { font-size: 14px; line-height: 1.62; color: rgba(245,239,224,0.6); margin: 0; }
+.ac-jcard.gold { background: linear-gradient(135deg, #C9963E, #E2B96A); border-color: rgba(201,150,62,0.55); }
+.ac-jcard.gold .ac-jimg { background: rgba(26,26,29,0.15); }
+.ac-jcard.gold .ac-jyear { color: rgba(26,26,29,0.65); }
+.ac-jcard.gold h3 { color: #1A1A1D; }
+.ac-jcard.gold p { color: rgba(26,26,29,0.82); }
+@media (min-width: 860px) {
+  .ac-tl-line { left: 50%; transform: translateX(-1px); }
+  .ac-tl-item { width: 50%; padding-left: 0; margin-bottom: 24px; }
+  .ac-tl-item.left { padding-right: 46px; }
+  .ac-tl-item.right { margin-left: 50%; padding-left: 46px; }
+  .ac-tl-item.left .ac-tl-dot { left: auto; right: -8px; }
+  .ac-tl-item.right .ac-tl-dot { left: -8px; }
+  /* connectors: attach each card to the center line */
+  .ac-tl-item::before { width: 46px; }
+  .ac-tl-item.left::before { left: auto; right: 0; }
+  .ac-tl-item.right::before { left: 0; }
+  /* interleave: pull each card up beside the previous one (skip the first item) */
+  .ac-tl-item + .ac-tl-item { margin-top: -210px; }
+}
