@@ -4,7 +4,11 @@
     {
       "name": "anita-portfolio",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5050", "--directory", "site"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5050"
+      ],
       "port": 5050
     }
   ]
