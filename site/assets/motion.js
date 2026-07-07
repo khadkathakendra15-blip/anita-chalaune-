@@ -294,6 +294,37 @@
     })();
   }
 
+  /* ---------- scroll-linked text fill (words brighten as they pass upward) ---------- */
+  function textFill() {
+    if (REDUCE) return;
+    function ensure() {
+      $$('.ac-fill').forEach(function (el) {
+        if (!el.querySelector('.ac-fw')) {
+          el.__acSplit = null;
+          try { split(el, false).forEach(function (w) { w.classList.add('ac-fw'); }); } catch (e) {}
+        }
+      });
+    }
+    ensure();
+    var en = 0, eiv = setInterval(function () { ensure(); if (++en > 26) clearInterval(eiv); }, 350);
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var lineHi = innerHeight * 0.82, band = innerHeight * 0.34;
+      var words = $$('.ac-fw');
+      for (var i = 0; i < words.length; i++) {
+        var r = words[i].getBoundingClientRect();
+        var t = (lineHi - (r.top + r.height / 2)) / band;
+        t = t < 0 ? 0 : t > 1 ? 1 : t;
+        words[i].style.opacity = (0.18 + 0.82 * t).toFixed(3);
+      }
+    }
+    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    var uiv = setInterval(update, 400); setTimeout(function () { clearInterval(uiv); }, 10000);
+    update();
+  }
+
   /* ---------- boot ----------
      The DC framework re-renders the template content after load, which would
      wipe any DOM mutations. So we wait until the DOM stops changing (settles)
@@ -313,12 +344,12 @@
       if (window.anime && $('#top h1') && $('section')) {
         whenSettled(function () {
           guard(cursor); guard(scrollFx); guard(hero); guard(svg); guard(magnetic);
-          guard(reveals); guard(counters); guard(tilt); guard(circularGallery);
+          guard(reveals); guard(counters); guard(tilt); guard(circularGallery); guard(textFill);
         });
         return;
       }
-      if (tries++ > 240) { guard(cursor); guard(scrollFx); return; }
-      requestAnimationFrame(poll);
+      if (tries++ > 400) { guard(cursor); guard(scrollFx); return; }
+      setTimeout(poll, 40);
     })();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
