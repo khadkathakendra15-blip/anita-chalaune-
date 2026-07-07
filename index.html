@@ -4,8 +4,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/asset_001.bin"></script>
 
-  <link rel="stylesheet" href="assets/motion.css?v=20">
+  <link rel="stylesheet" href="assets/motion.css?v=22">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== MOBILE HERO — stacked, no text/image overlap ===== */
+@media (max-width: 859px) {
+  header#top { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; min-height: auto !important; overflow: visible !important; padding: 82px 22px 42px !important; }
+  header#top > svg { display: none !important; }
+  header#top > div[style*="z-index: 3"], header#top > div[style*="z-index: 4"] { display: none !important; }
+  header#top > div[style*="bottom: 32px"] { display: none !important; }
+  header#top .ac-hp { position: static !important; width: 100% !important; height: 300px !important; opacity: 1 !important; border-radius: 18px !important; overflow: hidden !important; margin: 0 0 24px 0 !important; border: 1px solid rgba(201,150,62,0.22) !important; z-index: auto !important; }
+  header#top .ac-hp > div { display: none !important; }
+  header#top .ac-hp img { object-position: center 20% !important; filter: brightness(1.12) contrast(1.04) !important; }
+  header#top .ac-ht { position: static !important; width: 100% !important; min-height: auto !important; padding: 0 !important; z-index: auto !important; }
+  header#top .ac-hname { font-size: clamp(54px, 16.5vw, 78px) !important; line-height: 0.9 !important; margin: 0 0 12px !important; }
+  header#top .ac-hdiv { display: none !important; }
+  header#top .ac-hroles { margin: 0 0 24px !important; }
+  header#top .ac-htag { margin: 0 0 32px !important; }
+  header#top .ac-hbtns { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; margin-bottom: 40px !important; }
+  header#top .ac-hbtns > a { justify-content: center !important; width: 100% !important; box-sizing: border-box !important; padding-top: 16px !important; padding-bottom: 16px !important; }
+  header#top .ac-hstats { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; padding: 22px 18px !important; border-color: rgba(201,150,62,0.16) !important; }
+  header#top .ac-hstats svg { width: 16px !important; height: 16px !important; }
+  header#top .ac-hstats > div { padding: 12px 0 !important; }
+  /* GALLERY — keep the round ring, shorter section so less empty scroll */
+  #gallery { height: 190vh !important; }
+}
+</style>
 </head>
 <body>
 <x-dc>
@@ -495,7 +519,7 @@
       section, footer#contact { padding-left: 24px !important; padding-right: 24px !important; padding-top: 74px !important; padding-bottom: 74px !important; }
       nav { padding-left: 20px !important; padding-right: 20px !important; }
       header#top [style*="width: 44%"] { width: 100% !important; padding: 116px 24px 70px !important; }
-      header#top [style*="width: 62%"] { width: 100% !important; opacity: 0.2 !important; }
+      header#top [style*="width: 62%"] { width: 100% !important; opacity: 1 !important; }
       [style*="justify-content: space-between"] { flex-wrap: wrap !important; }
     }
     @media (max-width: 560px) {
@@ -551,7 +575,7 @@
     </svg>
 
     <!-- Photo – right side, full height, blends into bg -->
-    <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 62%; z-index: 2;">
+    <div class="ac-hp" style="position: absolute; right: 0; top: 0; bottom: 0; width: 62%; z-index: 2;">
       <img src="assets/asset_000.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;" alt="Anita Chalaune">
       <!-- right edge blend (melt the dark studio backdrop into the hero) -->
       <div style="position: absolute; inset: 0; background: linear-gradient(to left, #1A1A1D 0%, rgba(26,26,29,0.55) 12%, rgba(26,26,29,0) 28%); pointer-events: none;"></div>
@@ -600,25 +624,28 @@
     </div>
 
     <!-- Left text content -->
-    <div style="position: relative; z-index: 5; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; padding: 130px 56px 80px 68px; width: 44%; box-sizing: border-box; animation: acHeroIn 1s 0.1s cubic-bezier(0.22,1,0.36,1) both;">
+    <div class="ac-ht" style="position: relative; z-index: 5; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; padding: 130px 56px 80px 68px; width: 44%; box-sizing: border-box; animation: acHeroIn 1s 0.1s cubic-bezier(0.22,1,0.36,1) both;">
 
       <!-- Name -->
-      <h1 style="font-family: Cormorant Garamond, serif; font-weight: 700; font-size: clamp(72px, 8.2vw, 116px); line-height: 0.93; margin: 0; letter-spacing: 0.01em; color: #C9963E; text-shadow: 0 0 80px rgba(201,150,62,0.35);">ANITA<br>CHALAUNE</h1>
+      <h1 class="ac-hname" style="font-family: Cormorant Garamond, serif; font-weight: 700; font-size: clamp(72px, 8.2vw, 116px); line-height: 0.93; margin: 0; letter-spacing: 0.01em; color: #C9963E; text-shadow: 0 0 80px rgba(201,150,62,0.35);">ANITA<br>CHALAUNE</h1>
 
       <!-- Divider -->
-      <div style="width: 80px; height: 1.5px; background: linear-gradient(to right, #C9963E, rgba(201,150,62,0.3)); margin: 22px 0 18px;"></div>
+      <div class="ac-hdiv" style="width: 80px; height: 1.5px; background: linear-gradient(to right, #C9963E, rgba(201,150,62,0.3)); margin: 22px 0 18px;"></div>
 
       <!-- Roles -->
-      <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.28em; color: rgba(245,239,224,0.72); margin: 0 0 28px;">SINGER &nbsp;·&nbsp; PRODUCER &nbsp;·&nbsp; ENTREPRENEUR</p>
+      <div class="ac-hroles" style="margin: 0 0 28px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.22em; color: #C9963E;">MEDIA ENTREPRENEUR</div>
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.2em; color: rgba(245,239,224,0.55); margin-top: 6px;">PRODUCER &nbsp;·&nbsp; SINGER</div>
+      </div>
 
       <!-- Tagline -->
-      <div style="margin-bottom: 38px;">
+      <div class="ac-htag" style="margin-bottom: 38px;">
         <p style="font-family: Cormorant Garamond, serif; font-size: 26px; font-weight: 600; line-height: 1.4; margin: 0; color: rgba(245,239,224,0.92);">One Voice.<br>Many Stories.</p>
         <p style="font-family: Cormorant Garamond, serif; font-size: 26px; font-style: italic; font-weight: 500; line-height: 1.4; margin: 0; color: #C9963E;">Infinite Impact.</p>
       </div>
 
       <!-- Buttons -->
-      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 48px;">
+      <div class="ac-hbtns" style="display: flex; align-items: center; gap: 16px; margin-bottom: 48px;">
         <a href="https://open.spotify.com/artist/7KxMKhJAqS3cYxkVhM7nZF?si=pMVZrIU6Q5WL3d-cGj8VOw" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #C9963E, #E2B96A); color: #131316; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; padding: 15px 28px; border-radius: 4px; text-decoration: none; transition: opacity 0.25s;" style-hover="opacity: 0.85;">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.25" stroke="#131316" stroke-width="1.25"></circle><path d="M6 4.5L10 7L6 9.5V4.5Z" fill="#131316"></path></svg>
           LISTEN NOW
@@ -630,7 +657,7 @@
       </div>
 
       <!-- Stats card -->
-      <div style="background: #1E1E23; border: 1px solid rgba(201,150,62,0.28); border-radius: 12px; padding: 24px 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; backdrop-filter: blur(10px);">
+      <div class="ac-hstats" style="background: #1E1E23; border: 1px solid rgba(201,150,62,0.28); border-radius: 12px; padding: 24px 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; backdrop-filter: blur(10px);">
         <!-- stat 1 -->
         <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 4px 0;">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(201,150,62,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1080,5 +1107,5 @@ class Component extends DCLogic {
 </script>
 
 <script src="assets/anime.min.js"></script>
-<script src="assets/motion.js?v=20"></script>
+<script src="assets/motion.js?v=22"></script>
 </body></html>
